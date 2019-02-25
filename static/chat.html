@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>jQuery AJAX POST Form</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<form id="customerForm">
+    <input type="text" id="message" name="message" placeholder="Message" />
+    <input type="text" id="conversationId" name="conversationId" placeholder="Conversation ID" />
+    <input type="hidden" id="userId" name="userId" value="12345" />
+
+    <button type="submit">Submit</button>
+</form>
+
+<div id="response">
+    <pre></pre>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+   $(document).ready(function(){
+    $("#customerForm").submit(function(e){
+        e.preventDefault();
+        var form = $(this);
+        var action = form.attr("action");
+        var data = form.serializeArray();
+
+        $.ajax({
+                    url: 'http://localhost:8080/watson/conversation/messageOption',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(getFormData(data)),
+                    success: function(data){
+                        console.log("DATA POSTED SUCCESSFULLY"+data);
+                        $('#response pre').html(JSON.stringify(data, undefined, 2));
+                    },
+                    error: function( jqXhr, textStatus, errorThrown ){
+                        console.log( errorThrown );
+                    }
+        });
+});
+});
+
+//utility function
+function getFormData(data) {
+   var unindexed_array = data;
+   var indexed_array = {};
+
+   $.map(unindexed_array, function(n, i) {
+    indexed_array[n['name']] = n['value'];
+   });
+
+   return indexed_array;
+}
+</script>
+</body>
+</html>
