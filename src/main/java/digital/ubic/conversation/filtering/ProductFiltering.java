@@ -1,5 +1,6 @@
 package digital.ubic.conversation.filtering;
 
+import digital.ubic.conversation.filtering.model.Feature;
 import digital.ubic.conversation.filtering.model.FilteringType;
 import digital.ubic.conversation.filtering.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,9 @@ public class ProductFiltering {
     private Double calculateFiltersValue(Product product, Map<String, String> answers) {
 
         Double recommendationSum = 0D;
-        Map<String, String> productFeatures = product.getFeatures();
-        for (Map.Entry<String, String> f : productFeatures.entrySet()) {
-            final String featureName = f.getKey();
+        List<Feature> productFeatures = product.getFeatures();
+        for (Feature f : productFeatures) {
+            final String featureName = f.getType();
             final String featureValue = f.getValue();
             final String answerValue = answers.get(featureName);
 

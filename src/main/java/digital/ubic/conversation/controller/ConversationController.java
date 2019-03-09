@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -32,8 +34,9 @@ public class ConversationController {
     }
 
     @PostMapping("/option")
-    public void option(@RequestBody OptionRequest option) {
-        service.messageOption(option.getMessage(), option.getType(), option.getUserId(), option.getConversationId());
+    public ResponseEntity<?> option(@RequestBody OptionRequest option) throws URISyntaxException {
+        service.option(option.getMessage(), option.getType(), option.getUserId(), option.getConversationId());
+        return ResponseEntity.created(new URI("/product_answer")).body(option);
     }
 
     @PostMapping("/offerProduct")

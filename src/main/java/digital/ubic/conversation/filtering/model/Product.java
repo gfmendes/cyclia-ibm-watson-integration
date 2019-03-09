@@ -1,18 +1,26 @@
 package digital.ubic.conversation.filtering.model;
 
+import org.springframework.data.annotation.Id;
+
+import java.util.List;
 import java.util.Map;
 
 public class Product {
 
+    @Id
+    private String id;
     private String name;
-    private Map<String, String> features;
+    private List<Feature> features;
     private Double filteringValue;
-    private String url;
+    private String URL;
     private Boolean sponsored;
 
-    public Product(String name, Map<String, String> features) {
-        this.name = name;
-        this.features = features;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -23,11 +31,11 @@ public class Product {
         this.name = name;
     }
 
-    public Map<String, String> getFeatures() {
+    public List<Feature> getFeatures() {
         return features;
     }
 
-    public void setFeatures(Map<String, String> features) {
+    public void setFeatures(List<Feature> features) {
         this.features = features;
     }
 
@@ -39,12 +47,12 @@ public class Product {
         this.filteringValue = filteringValue;
     }
 
-    public String getUrl() {
-        return url;
+    public String getURL() {
+        return URL;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
     public Boolean getSponsored() {
@@ -61,7 +69,7 @@ public class Product {
                 "name='" + name + '\'' +
                 ", features=" + features +
                 ", filteringValue=" + filteringValue +
-                ", url='" + url + '\'' +
+                ", url='" + URL + '\'' +
                 ", sponsored=" + sponsored +
                 '}';
     }

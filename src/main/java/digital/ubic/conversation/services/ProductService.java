@@ -23,11 +23,19 @@ public class ProductService {
         //productFiltering.filter(productDao.getAll(), answers);
     }
 
-    public void add(Product product) {
-        //productDao.add(product);
+    public Product save(Product product) {
+        return productDao.save(product);
     }
 
-    public List<Product> getAll() {
-        return productDao.getAll();
+    public List<Product> findAll() {
+        return productDao.findAll();
     }
+
+    public void deleteById(String id) {
+        productDao.deleteById(id);
+    }
+
+    //public List<Product> getAll() {
+      //  return productDao.getAll();
+    //}
 }
