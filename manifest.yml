@@ -1,8 +1,8 @@
 applications:
-- path: .
+- path: ./target/cyclia-api-1.0.0-SNAPSHOT.jar
   memory: 512M
   instances: 1
-  name: cyclia-api-1.0.0-SNAPSHOT
+  name: cyclia-api
   disk_quota: 1024M
   services:
   - cyclia-mongo
