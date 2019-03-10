@@ -18,11 +18,11 @@ public class ProductController {
     private ProductService service;
 
 
-    @PostMapping("/save")
+    @PostMapping("/")
     @ResponseBody
     public ResponseEntity save(@RequestBody Product product) throws URISyntaxException {
         Product productSaved = service.save(product);
-        return ResponseEntity.created(new URI("/list")).body(productSaved);
+        return ResponseEntity.created(new URI("/")).body(productSaved);
     }
 
 /*
@@ -50,7 +50,7 @@ public class ProductController {
     }
     */
 
-    @GetMapping("/list")
+    @GetMapping("/")
     @ResponseBody
     public ResponseEntity<List<Product>> list() {
         List<Product> response = service.findAll();

@@ -16,7 +16,7 @@ public class FilteringController {
     @Autowired
     private FilteringDaoMongo dao;
 
-    @GetMapping("/list")
+    @GetMapping("/")
     @ResponseBody
     public ResponseEntity<List<FilteringType>> list() {
         return ResponseEntity.ok(dao.getFilteringTypes());

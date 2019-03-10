@@ -47,11 +47,11 @@ public class ConversationService {
         return message(message, userId, conversationId);
     }
 
-    public void option(String message, String type, Long userId, String conversationId) {
+    public void option(String message, String type, String conversationId) {
         answerDao.save(conversationId, type, message);
     }
 
-    public List<Product> offerProduct(String message, Long userId, String conversationId) {
+    public List<Product> offerProduct(String conversationId) {
 
         return productFiltering.filter(productDao.findAll(), answerDao.get(conversationId));
     }
