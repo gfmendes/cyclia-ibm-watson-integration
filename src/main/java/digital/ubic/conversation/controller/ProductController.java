@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -25,30 +26,6 @@ public class ProductController {
         return ResponseEntity.created(new URI("/")).body(productSaved);
     }
 
-/*
-
-    @PostMapping("/update")
-    @ResponseBody
-    public ResponseEntity<String> update(@RequestBody OptionRequest option) {
-        String response = service.messageOption(option.getMessage(), option.getType(), option.getUserId(), option.getConversationId());
-        return ResponseEntity.ok(response);
-    }
-
-
-    @DeleteMapping("/delete")
-    @ResponseBody
-    public ResponseEntity<List<Product>> delete(@RequestBody ConversationRequest conversation) {
-        List<Product> response = service.offerProduct(conversation.getMessage(), conversation.getUserId(), conversation.getConversationId());
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/get")
-    @ResponseBody
-    public ResponseEntity<List<Product>> get(@RequestBody ConversationRequest conversation) {
-        List<Product> response = service.offerProduct(conversation.getMessage(), conversation.getUserId(), conversation.getConversationId());
-        return ResponseEntity.ok(response);
-    }
-    */
 
     @GetMapping("/")
     @ResponseBody
@@ -56,6 +33,5 @@ public class ProductController {
         List<Product> response = service.findAll();
         return ResponseEntity.ok(response);
     }
-
 
 }

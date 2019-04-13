@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/assistant")
 public class ConversationController {
@@ -57,7 +58,7 @@ public class ConversationController {
     }
 
     @ApiOperation(
-            value = "Based on previous answers of a conversation, offer a list of products",
+            value = "Based on previous answers of a conversation, offers a list of products",
             notes = "Fill 'conversationId' with a valid value. <br/>")
     @GetMapping("/offerProduct/{conversationId}")
     @ResponseBody
